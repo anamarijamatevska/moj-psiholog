@@ -2,9 +2,9 @@ import { useState } from "react"
 import { Button, FloatingLabel, Form } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { ArrowLeft } from "react-bootstrap-icons"
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
 
 import './LoginPage.css'
-import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
 
 const LoginPage = () => {
   const [email, setEmail] = useState()
@@ -33,7 +33,7 @@ const LoginPage = () => {
           <Form onSubmit={login} className="pt-3">
             <FloatingLabel
               controlId="floatingInput"
-              label="Име"
+              label="Е-маил"
               className="mb-3"
             >
               <Form.Control required onChange={(e) => setEmail(e.target.value)} type="text" placeholder="Е-маил" name="email" />

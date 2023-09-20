@@ -1,9 +1,9 @@
 import React, { memo, useState } from 'react'
-import { Modal } from 'react-bootstrap'
 import { questions } from '../../assets/scripts/questions'
 import { therapists } from '../../assets/scripts/therapists'
 import Success from '../Success/Success'
 import SwiperComponent from '../Swiper/Swiper'
+import ModalComponent from '../Modal/Modal'
 
 import 'swiper/css'
 import 'swiper/css/navigation'
@@ -26,6 +26,7 @@ const Flow = ({ isSessionBooked, setIsSessionBooked }) => {
     setIsDone(false)
   }
   const handleShow = () => setShow(true)
+  const hideModal = () => setShow(false)
 
   const onAnswerClick = (category, index, e) => {
     Array.from(document.getElementsByClassName(e.target.className))?.forEach((question) => question.className = e.target.className)
@@ -75,7 +76,7 @@ const Flow = ({ isSessionBooked, setIsSessionBooked }) => {
 
   if (isDone) {
     return (
-      <Modal
+      <ModalComponent
         show={show}
         handleClose={handleClose}
         handleShow={handleShow}
@@ -86,6 +87,7 @@ const Flow = ({ isSessionBooked, setIsSessionBooked }) => {
         session={session}
         userTherapists={userTherapists}
         setActiveTherapist={setActiveTherapist}
+        hideModal={hideModal}
       />
     )
   }

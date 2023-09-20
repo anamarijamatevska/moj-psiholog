@@ -1,10 +1,10 @@
 import { memo } from "react";
-import { Button, Card, Form, Table } from "react-bootstrap";
+import { Button, Card, Form, Modal, Table } from "react-bootstrap";
 import { CameraVideo, ChatDots, Mic } from "react-bootstrap-icons";
 
-const Modal = ({ show, handleClose, handleShow, activeTherapist, handleDatePick, cardClickHandler, date, session, userTherapists, setActiveTherapist }) => (
+const ModalComponent = ({ show, handleClose, handleShow, activeTherapist, handleDatePick, cardClickHandler, date, session, userTherapists, setActiveTherapist, hideModal }) => (
   <div className='row'>
-    <Modal show={show} onHide={handleClose}>
+    <Modal show={show} onHide={hideModal}>
       <Modal.Header closeButton>
       </Modal.Header>
       <Modal.Body scrollable={1}>
@@ -101,7 +101,7 @@ const Modal = ({ show, handleClose, handleShow, activeTherapist, handleDatePick,
         </div>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
+        <Button variant="secondary" onClick={hideModal}>
           Затвори
         </Button>
         <Button disabled={!date || !session} variant={date && session ? 'success' : 'disabled'} onClick={handleClose}>
@@ -109,7 +109,7 @@ const Modal = ({ show, handleClose, handleShow, activeTherapist, handleDatePick,
         </Button>
       </Modal.Footer>
     </Modal>
-    {userTherapists.map((therapist) => (
+    {userTherapists?.map((therapist) => (
       <>
         <div className='col-sm-6' role='button' onClick={() => { handleShow(); setActiveTherapist(therapist) }}>
           <div className="card">
@@ -124,4 +124,4 @@ const Modal = ({ show, handleClose, handleShow, activeTherapist, handleDatePick,
   </div>
 )
 
-export default memo(Modal)
+export default memo(ModalComponent)
