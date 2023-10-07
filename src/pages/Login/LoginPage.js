@@ -57,7 +57,7 @@ const LoginPage = () => {
           <Form onSubmit={login} className="pt-3">
             <FloatingLabel
               controlId="floatingInput"
-              label="Име"
+              label="Е-маил"
               className="mb-3"
             >
               <Form.Control required onChange={(e) => setEmail(e.target.value)} type="text" placeholder="Е-маил" name="email" />

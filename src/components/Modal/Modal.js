@@ -116,7 +116,7 @@ const ModalComponent = ({ show, handleClose, handleShow, activeTherapist, handle
       </Modal.Footer>
     </Modal>
 
-    {userTherapists.map((therapist) => (
+    {userTherapists?.map((therapist) => (
       <>
         <div className='col-sm-6' role='button' onClick={() => { handleShow(); setActiveTherapist(therapist) }}>
           <div className="card">
