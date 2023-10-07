@@ -8,7 +8,7 @@ const SwiperComponent = ({ questions = [], onAnswerClick }) => (
       <SwiperSlide key={idx}>
         <h1 className='mb-4'>{question.question}</h1>
         <div className={`answersWrapper d-flex flex-column ${question.type === 'checkbox' ? 'align-items-start justify-content-start' : 'align-items-center justify-content-center'}`}>
-          {question.answers.map((answer, index) => (
+          {question.answers?.map((answer, index) => (
             <>
               {question.type === 'checkbox' ? (
                 <Form.Check

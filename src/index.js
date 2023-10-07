@@ -11,6 +11,7 @@ import WelcomePage from './pages/Welcome/WelcomePage'
 import ProtectedRoute from './pages/ProtectedRoute/ProtectedRoute'
 import ProtectedForLoggedIn from './pages/ProtectedRoute/ProtectedForLoggedIn'
 import SurveyPage from './pages/Survey/SurveyPage'
+import ProfilePage from './pages/Profile/Profile'
 
 import './index.css'
 
@@ -32,11 +33,13 @@ const router = createBrowserRouter([
   {
     path: '/survey',
     element: <ProtectedRoute user={hasUser}><SurveyPage /></ProtectedRoute>
+  },
+  {
+    path: '/profile',
+    element: <ProtectedRoute user={hasUser}><ProfilePage /></ProtectedRoute>
   }
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+  <RouterProvider router={router} />
 )

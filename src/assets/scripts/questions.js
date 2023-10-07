@@ -2,6 +2,7 @@ export const questions = [
   {
     question: 'Што Ве натера да побарате помош од психолог?',
     type: 'checkbox',
+    order: 1,
     answers: [
       {
         answer: 'Се чувстувам депресивно',
@@ -44,6 +45,7 @@ export const questions = [
   {
     question: 'Дали моментално се соочувате со прекумерна тага или депресија?',
     type: 'radio',
+    order: 2,
     answers: [
       {
         answer: 'Да',
@@ -58,6 +60,7 @@ export const questions = [
   {
     question: 'Дали се чувствувате лошо за себе или дали мислите дека сте ги разочарале најблиските?',
     type: 'radio',
+    order: 3,
     answers: [
       {
         answer: 'Да',
@@ -72,6 +75,7 @@ export const questions = [
   {
     question: 'Какви се Вашите моментални навики за исхрана?',
     type: 'radio',
+    order: 4,
     answers: [
       {
         answer: 'Лоши',
@@ -90,6 +94,7 @@ export const questions = [
   {
     question: 'Дали Ви доаѓаат мисли дека би Ви било подобро доколку сте мртви или доколку се повредите себе на некаков начин?',
     type: 'radio',
+    order: 5,
     answers: [
       {
         answer: 'Да',
@@ -104,6 +109,7 @@ export const questions = [
   {
     question: 'Кога последно помисливте на самоубиство?',
     type: 'radio',
+    order: 6,
     answers: [
       {
         answer: 'Никогаш',
@@ -130,6 +136,7 @@ export const questions = [
   {
     question: 'Дали некогаш сте имале панични напади?',
     type: 'radio',
+    order: 7,
     answers: [
       {
         answer: 'Да',
@@ -144,6 +151,7 @@ export const questions = [
   {
     question: 'Дали се менуваат Вашите мисли и чувства кога ќе осетите анксиозност?',
     type: 'radio',
+    order: 8,
     answers: [
       {
         answer: 'Да',
@@ -158,6 +166,7 @@ export const questions = [
   {
     question: 'Дали имате претходни искуства или трауми кои може да се причина за Вашата анксиозност?',
     type: 'radio',
+    order: 9,
     answers: [
       {
         answer: 'Да',
@@ -172,6 +181,7 @@ export const questions = [
   {
     question: 'Дали моментално се соочувате со анксиозност или панични напади?',
     type: 'radio',
+    order: 10,
     answers: [
       {
         answer: 'Да',
@@ -186,6 +196,7 @@ export const questions = [
   {
     question: 'Дали често помислувате на самоубиство?',
     type: 'radio',
+    order: 11,
     answers: [
       {
         answer: 'Да',
@@ -204,6 +215,7 @@ export const questions = [
   {
     question: 'Колку често излегувате со Вашите пријатели или партнер?',
     type: 'radio',
+    order: 12,
     answers: [
       {
         answer: 'Немам пријатели/партнер',
@@ -222,6 +234,7 @@ export const questions = [
   {
     question: 'Дали се храните здраво?',
     type: 'radio',
+    order: 13,
     answers: [
       {
         answer: 'Да',
@@ -236,6 +249,7 @@ export const questions = [
   {
     question: 'Каков е Вашиот однос со храната?',
     type: 'radio',
+    order: 14,
     answers: [
       {
         answer: 'Добар',
@@ -250,6 +264,7 @@ export const questions = [
   {
     question: 'Дали имате луѓе во Вашиот живот кои Ви даваат поддршка?',
     type: 'radio',
+    order: 15,
     answers: [
       {
         answer: 'Да',
@@ -264,6 +279,7 @@ export const questions = [
   {
     question: 'Дали добро се справувате со стрес?',
     type: 'radio',
+    order: 16,
     answers: [
       {
         answer: 'Да',
@@ -278,6 +294,7 @@ export const questions = [
   {
     question: 'Каков Ви е односот со Вашата фамилија?',
     type: 'radio',
+    order: 17,
     answers: [
       {
         answer: 'Добар',
@@ -292,6 +309,7 @@ export const questions = [
   {
     question: 'Кои се Вашите преференци за Вашиот психолог?',
     type: 'radio',
+    order: 18,
     answers: [
       {
         answer: 'Да биде машко',

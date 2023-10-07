@@ -2,9 +2,12 @@ import { Button, FloatingLabel, Form } from "react-bootstrap"
 import { memo, useState } from "react"
 import { Link } from "react-router-dom"
 import Logo from '../../assets/images/logo.png'
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
+import { FIREBASE_ERROR_CODES } from "../../constants";
+import { getFirebaseConfig } from "../../helpers/firebaseHelpers";
 
 import './HomePage.css'
-import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
 
 const HomePage = () => {
   const [name, setName] = useState()
@@ -14,9 +17,10 @@ const HomePage = () => {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
   const [errorMessage, setErrorMessage] = useState()
-  const [users] = useState(localStorage.getItem('users'))
 
-  const submit = (e) => {
+  const { auth } = getFirebaseConfig()
+
+  const submit = async (e) => {
     e.preventDefault()
 
     const user = {
@@ -28,24 +32,21 @@ const HomePage = () => {
       password
     }
 
-    const regUsers = users ? JSON.parse(users) : []
-    const hasUser = regUsers?.find((usr) => usr?.email === email)
+    createUserWithEmailAndPassword(auth, user.email, user.password)
+      .then(() => {
+        setAge(null)
+        setEmail(null)
+        setName(null)
+        setLastname(null)
+        setGender(null)
+        setPassword(null)
 
-    if (hasUser) return setErrorMessage('Е-маил адресата веќе постои')
-
-    setAge(null)
-    setEmail(null)
-    setName(null)
-    setLastname(null)
-    setGender(null)
-    setPassword(null)
-
-    const newUsers = regUsers.length ? [...regUsers, user] : [user]
-    const stringifiedUsers = JSON.stringify(newUsers)
-
-    localStorage.setItem('users', stringifiedUsers)
-    sessionStorage.setItem('hasUser', true)
-    window.location.assign('/welcome')
+        sessionStorage.setItem('hasUser', true)
+        window.location.assign('/welcome')
+      })
+      .catch((error) => {
+        setErrorMessage(FIREBASE_ERROR_CODES[error.code])
+      });
   }
 
   return (

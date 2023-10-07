@@ -1,10 +1,14 @@
-import { memo } from "react";
-import { Button, Card, Form, Table } from "react-bootstrap";
+import { memo, useState } from "react";
+import { Button, Card, Form, Modal, Table } from "react-bootstrap";
 import { CameraVideo, ChatDots, Mic } from "react-bootstrap-icons";
+import { THERAPIST_IMAGES } from "../../constants";
 
-const Modal = ({ show, handleClose, handleShow, activeTherapist, handleDatePick, cardClickHandler, date, session, userTherapists, setActiveTherapist }) => (
-  <div className='row'>
-    <Modal show={show} onHide={handleClose}>
+const ModalComponent = ({ show, handleClose, handleShow, activeTherapist, handleDatePick, cardClickHandler, date, session, userTherapists, setActiveTherapist, handleHide }) => {
+  const [price, setPrice] = useState()
+
+  return (
+    <div className='row'>
+    <Modal show={show} onHide={handleHide}>
       <Modal.Header closeButton>
       </Modal.Header>
       <Modal.Body scrollable={1}>
@@ -48,7 +52,7 @@ const Modal = ({ show, handleClose, handleShow, activeTherapist, handleDatePick,
               text='white'
               className=""
               role='button'
-              onClick={() => cardClickHandler('SMS пораки')}
+              onClick={() => { cardClickHandler('SMS пораки'); setPrice(500) }}
             >
               <Card.Body>
                 <Card.Text className='d-flex flex-column align-items-center justify-content-center'>
@@ -65,7 +69,7 @@ const Modal = ({ show, handleClose, handleShow, activeTherapist, handleDatePick,
               text='white'
               className=""
               role='button'
-              onClick={() => cardClickHandler('Телефонски разговор')}
+              onClick={() => {cardClickHandler('Телефонски разговор'); setPrice(1000)} }
             >
               <Card.Body>
                 <Card.Text className='d-flex flex-column align-items-center justify-content-center'>
@@ -82,7 +86,7 @@ const Modal = ({ show, handleClose, handleShow, activeTherapist, handleDatePick,
               text='white'
               className=""
               role='button'
-              onClick={() => cardClickHandler('Видео состанок')}
+              onClick={() => {cardClickHandler('Видео состанок'); setPrice(1500)}}
             >
               <Card.Body>
                 <Card.Text className='d-flex flex-column align-items-center justify-content-center'>
@@ -96,24 +100,27 @@ const Modal = ({ show, handleClose, handleShow, activeTherapist, handleDatePick,
             <div className='mt-3'>
               <div><b>Датум:</b> {date}</div>
               <div className='mb-0'><b>Тип:</b> {session}</div>
+              <div><b>Цена:</b> <span className="text-decoration-line-through">{price} МКД</span> - 0 МКД</div>
+              <p className="text-success">Закажи сега и добиј еден месец гратис сесии</p>
             </div>
           )}
         </div>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
+        <Button variant="secondary" onClick={handleHide}>
           Затвори
         </Button>
-        <Button disabled={!date || !session} variant={date && session ? 'success' : 'disabled'} onClick={handleClose}>
+        <Button disabled={!date || !session} variant={date && session ? 'success' : 'disabled'} onClick={() => handleClose(activeTherapist?.fullname)}>
           Закажи
         </Button>
       </Modal.Footer>
     </Modal>
+
     {userTherapists.map((therapist) => (
       <>
         <div className='col-sm-6' role='button' onClick={() => { handleShow(); setActiveTherapist(therapist) }}>
           <div className="card">
-            <img src={therapist.image} className="card-img-top" alt="..." />
+            <img src={THERAPIST_IMAGES[therapist.image]} className="card-img-top" alt="..." />
             <div className="card-body">
               <p className="card-text">{therapist.fullname}</p>
             </div>
@@ -122,6 +129,7 @@ const Modal = ({ show, handleClose, handleShow, activeTherapist, handleDatePick,
       </>
     ))}
   </div>
-)
+  )
+}
 
-export default memo(Modal)
+export default memo(ModalComponent)
